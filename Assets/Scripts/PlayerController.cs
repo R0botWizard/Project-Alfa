@@ -8,9 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
 
-    
     private CharacterController _pc;
-
+    private Vector3 dir = Vector3.zero;
     private void Awake()
     {
         _pc = GetComponent<CharacterController>();
@@ -23,7 +22,7 @@ public class PlayerController : MonoBehaviour
     }
     private void playerMove()
     {
-        var dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        dir = new Vector3(Input.GetAxis("Horizontal"), verticalvelocity, Input.GetAxis("Vertical")).normalized;
         _pc.Move(dir * playerSprint(_speed) * Time.deltaTime);
  
     }
@@ -36,9 +35,26 @@ public class PlayerController : MonoBehaviour
         }
         return speed;
     }
+
+    private float gravity = 9.81f;
+    private float verticalvelocity = 0;
     private void playerJump()
     {
+        if (Input.GetButton("Jump") && _pc.isGrounded)
+        {
+            verticalvelocity = _jumpForce;
+        }
+        else if (_pc.isGrounded)
+        {
+            verticalvelocity = 0;
+        }
+
+        verticalvelocity -= gravity * Time.deltaTime;
+        
 
     }
+    
+
+
 
 }
