@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Properties")]
     [SerializeField] private float _speed;
+    [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
 
     private CharacterController _pc;
@@ -24,7 +25,6 @@ public class PlayerController : MonoBehaviour
     {
         dir = new Vector3(Input.GetAxis("Horizontal"), verticalvelocity, Input.GetAxis("Vertical")).normalized;
         _pc.Move(dir * playerSprint(_speed) * Time.deltaTime);
- 
     }
 
     private float playerSprint(float speed)
@@ -48,13 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             verticalvelocity = 0;
         }
-
         verticalvelocity -= gravity * Time.deltaTime;
-        
-
     }
-    
-
-
 
 }
