@@ -5,23 +5,20 @@ using UnityEngine;
 public class PlayerAim : MonoBehaviour
 {
     [Header("Properties")]
-    [SerializeField] private float sensitivity;
+    [SerializeField] private float _sensitivity;
 
-    private float xAxis;
-    private float yAxis;
-    private Vector3 rotate;
     
-    void Awake()
+    private void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
-    
-    void Update()
+    private void Update()
     {
-        xAxis = Input.GetAxis("Mouse Y");
-        yAxis = Input.GetAxis("Mouse X");
-        rotate = new Vector3(xAxis * sensitivity, yAxis * -sensitivity , 0);
-        transform.eulerAngles = transform.eulerAngles - rotate;
+        float xMouse = Input.GetAxis("Mouse X") * _sensitivity;
+        float yMouse = Input.GetAxis("Mouse Y") * _sensitivity;
+
+        transform.Rotate(new Vector3(0, xMouse * Time.deltaTime, 0)) ;
+        
     }
 }

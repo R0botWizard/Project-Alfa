@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _xSensitivity;
 
     private CharacterController _pc;
     private Vector3 dir = Vector3.zero;
+    private Vector3 moveDir = Vector3.zero;
     private void Awake()
     {
         _pc = GetComponent<CharacterController>();
@@ -19,14 +21,43 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         playerMove();
+        playerRotation();
         playerJump();
     }
     private void playerMove()
     {
         dir = new Vector3(Input.GetAxis("Horizontal"), verticalvelocity, Input.GetAxis("Vertical")).normalized;
-        _pc.Move(dir * playerSprint(_speed) * Time.deltaTime);
+        moveDir = dir;
+        if (dir.x > 0)
+        {
+            moveDir = transform.right;
+            moveDir.y = verticalvelocity;
+        }
+        if (dir.z > 0)
+        {
+            moveDir = transform.forward;
+            moveDir.y = verticalvelocity;
+        }
+        if (dir.x < 0)
+        {
+            moveDir = -transform.right;
+            moveDir.y = verticalvelocity;
+        }
+        if (dir.z < 0)
+        {
+            moveDir = -transform.forward;
+            moveDir.y = verticalvelocity;
+        }
+
+        _pc.Move(moveDir * playerSprint(_speed) * Time.deltaTime);
     }
 
+    private void playerRotation()
+    {
+        float xMouse = Input.GetAxis("Mouse X") * _xSensitivity;
+
+        transform.Rotate(new Vector3(0, xMouse * Time.deltaTime, 0));
+    }
     private float playerSprint(float speed)
     {
         if (Input.GetKey(KeyCode.LeftShift))
