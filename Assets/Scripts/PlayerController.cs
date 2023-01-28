@@ -49,7 +49,9 @@ public class PlayerController : MonoBehaviour
             moveDir.y = verticalvelocity;
         }
 
-        _pc.Move(moveDir * playerSprint(_speed) * Time.deltaTime);
+        //_pc.Move(moveDir * playerSprint(_speed) * Time.deltaTime);
+        
+        _pc.Move(new Vector3(moveDir.x * playerSprint(_speed) * Time.deltaTime, verticalvelocity * Time.deltaTime, moveDir.z * playerSprint(_speed) * Time.deltaTime));
     }
 
     private void playerRotation()

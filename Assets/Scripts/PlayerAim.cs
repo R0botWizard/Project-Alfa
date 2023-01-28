@@ -6,7 +6,9 @@ public class PlayerAim : MonoBehaviour
 {
     [Header("Properties")]
     [SerializeField] private float _sensitivity;
+    [SerializeField] private Camera _camera;
 
+    private float _transitionSpeed = 50;
     
     private void Awake()
     {
@@ -15,10 +17,35 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
-        float xMouse = Input.GetAxis("Mouse X") * _sensitivity;
-        float yMouse = Input.GetAxis("Mouse Y") * _sensitivity;
+        onFire();
+        onAim();
+    }
 
-        transform.Rotate(new Vector3(0, xMouse * Time.deltaTime, 0)) ;
+    private void onFire()
+    {
+        if (Input.GetButton("Fire1"))
+        {
+            Debug.Log("fire");
+        }
+    }
+
+    private void onAim()
+    {
+        if (Input.GetButton("Fire2"))
+        {
+            if(_camera.fieldOfView > 40)
+            {
+                //_camera.fieldOfView -= _transitionSpeed * Time.deltaTime;
+                _camera.fieldOfView = Mathf.MoveTowards(_camera.fieldOfView,40,_transitionSpeed*Time.deltaTime);
+
+            }
+        }
+        else if(_camera.fieldOfView < 60)
+        {
+           // _camera.fieldOfView += _transitionSpeed * Time.deltaTime;
+            _camera.fieldOfView = Mathf.MoveTowards(_camera.fieldOfView, 60, _transitionSpeed * Time.deltaTime);
+        }
         
     }
+
 }
