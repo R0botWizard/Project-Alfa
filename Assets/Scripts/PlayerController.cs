@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _xSensitivity;
 
+    public bool isSprinting;
     private CharacterController _pc;
-    private Vector3 dir = Vector3.zero;
-    private Vector3 moveDir = Vector3.zero;
+    public Vector3 dir = Vector3.zero;
+    public Vector3 moveDir;
     private void Awake()
     {
         _pc = GetComponent<CharacterController>();
+        moveDir = Vector3.zero;
     }
 
     private void Update()
@@ -51,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
         //_pc.Move(moveDir * playerSprint(_speed) * Time.deltaTime);
         
-        _pc.Move(new Vector3(moveDir.x * playerSprint(_speed) * Time.deltaTime, verticalvelocity * Time.deltaTime, moveDir.z * playerSprint(_speed) * Time.deltaTime));
+        _pc.Move(new Vector3(moveDir.x * playerSprint() * Time.deltaTime, verticalvelocity * Time.deltaTime, moveDir.z * playerSprint() * Time.deltaTime));
     }
 
     private void playerRotation()
@@ -60,13 +62,15 @@ public class PlayerController : MonoBehaviour
 
         transform.Rotate(new Vector3(0, xMouse * Time.deltaTime, 0));
     }
-    private float playerSprint(float speed)
+    public float playerSprint()
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            return speed + 10;
+            isSprinting = true;
+            return _speed + 10;
         }
-        return speed;
+        isSprinting = false;
+        return _speed;
     }
 
     private float gravity = 9.81f;
