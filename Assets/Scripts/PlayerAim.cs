@@ -7,18 +7,20 @@ public class PlayerAim : MonoBehaviour
     [Header("Properties")]
     [SerializeField] private float _sensitivity;
     [SerializeField] private Camera _camera;
+     
+    
 
     private float _transitionSpeed = 50;
     
     private void Awake()
     {
-
+        
     }
 
     private void Update()
     {
         onFire();
-        onAim();
+        onZoom();
     }
 
     private void onFire()
@@ -29,7 +31,7 @@ public class PlayerAim : MonoBehaviour
         }
     }
 
-    private void onAim()
+    private void onZoom()
     {
         if (Input.GetButton("Fire2"))
         {
@@ -44,8 +46,13 @@ public class PlayerAim : MonoBehaviour
         {
            // _camera.fieldOfView += _transitionSpeed * Time.deltaTime;
             _camera.fieldOfView = Mathf.MoveTowards(_camera.fieldOfView, 60, _transitionSpeed * Time.deltaTime);
+            
         }
         
     }
+
+    
+
+
 
 }
