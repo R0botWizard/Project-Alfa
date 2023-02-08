@@ -5,13 +5,11 @@ using UnityEngine;
 public class PlayerAim : MonoBehaviour
 {
     [Header("Properties")]
-    [SerializeField] private float _sensitivity;
+    [SerializeField] private float _ySensitivity;
     [SerializeField] private Camera _camera;
-     
-    
 
     private float _transitionSpeed = 50;
-    
+
     private void Awake()
     {
         
@@ -19,8 +17,31 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
+        onAim();
         onFire();
         onZoom();
+    }
+
+    /*private void onAim()
+    {
+        float yMouse = Input.GetAxis("Mouse Y") * -_ySensitivity * Time.deltaTime;
+
+        _camera.transform.Rotate(yMouse, 0, 0);
+    }*/
+
+    private void onAim()
+    {
+        float yMouse = Input.GetAxis("Mouse Y") * -_ySensitivity * Time.deltaTime;
+
+        float currentXRotation = _camera.transform.localEulerAngles.x;
+
+        if (currentXRotation > 180)
+        {
+            currentXRotation -= 360;
+        }
+        float clampedXRotation = Mathf.Clamp(currentXRotation + yMouse, -30, 30);
+
+        _camera.transform.localEulerAngles = new Vector3(clampedXRotation, 0, 0);
     }
 
     private void onFire()
