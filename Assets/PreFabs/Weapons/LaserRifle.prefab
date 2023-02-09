@@ -193,6 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9084142750114182503}
   - component: {fileID: 2562868243892955550}
+  - component: {fileID: 4290047353198136100}
   m_Layer: 0
   m_Name: LaserRifle
   m_TagString: Untagged
@@ -238,6 +239,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &4290047353198136100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4402095644198225700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7fd27dec65e15479883c6affb13ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: 14aee38c0525e294290e5bcd73682170, type: 2}
 --- !u!1 &5834156105576390037
 GameObject:
   m_ObjectHideFlags: 0

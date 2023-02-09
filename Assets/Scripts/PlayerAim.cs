@@ -7,9 +7,9 @@ public class PlayerAim : MonoBehaviour
     [Header("Properties")]
     [SerializeField] private float _ySensitivity;
     [SerializeField] private Camera _camera;
-
+    [SerializeField] private WeaponController[] _weapons;
     private float _transitionSpeed = 50;
-
+    private int _selectedWeapon;
     private void Awake()
     {
         
@@ -17,9 +17,11 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
+        manageWeapons();
         onAim();
         onFire();
         onZoom();
+        
     }
 
     /*private void onAim()
@@ -35,7 +37,7 @@ public class PlayerAim : MonoBehaviour
 
         float currentXRotation = _camera.transform.localEulerAngles.x;
 
-        if (currentXRotation > 180)
+        if (currentXRotation > 180) 
         {
             currentXRotation -= 360;
         }
@@ -48,8 +50,14 @@ public class PlayerAim : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
-            Debug.Log("fire");
+            _weapons[_selectedWeapon].shoot();
+            _weapons[_selectedWeapon].shootingAnimation(true);
         }
+        else
+        {
+            _weapons[_selectedWeapon].shootingAnimation(false);
+        }
+        
     }
 
     private void onZoom()
@@ -70,6 +78,33 @@ public class PlayerAim : MonoBehaviour
             
         }
         
+    }
+
+    private void weaponSelect(int selectedWeaponIndex)
+    {
+        for(int i = 0; i< _weapons.Length; i++)
+        {
+            _weapons[i].gameObject.SetActive(false);
+        }
+
+        _weapons[selectedWeaponIndex].gameObject.SetActive(true);
+        _selectedWeapon = selectedWeaponIndex;
+        
+    }
+    private void manageWeapons()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            weaponSelect(0); 
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            weaponSelect(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            weaponSelect(2);
+        }
     }
 
     
