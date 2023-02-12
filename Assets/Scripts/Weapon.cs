@@ -6,7 +6,7 @@ using UnityEngine;
 public class Weapon : ScriptableObject
 {
     public float range;
-    public float shootingDelay;
+    public float fireRate;
     public float damage;
     public int ammo;
     public float maxAmmo;

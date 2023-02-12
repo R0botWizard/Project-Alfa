@@ -46,10 +46,12 @@ public class PlayerAim : MonoBehaviour
         _camera.transform.localEulerAngles = new Vector3(clampedXRotation, 0, 0);
     }
 
+    private float nextTimeToFire = 0f;
     private void onFire()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
+            nextTimeToFire = Time.time + 1f / _weapons[_selectedWeapon].weapon.fireRate;
             _weapons[_selectedWeapon].shoot();
             _weapons[_selectedWeapon].shootingAnimation(true);
         }

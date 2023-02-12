@@ -251,7 +251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7fd27dec65e15479883c6affb13ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  _weaponOrigin: {fileID: 0}
   weapon: {fileID: 11400000, guid: 14aee38c0525e294290e5bcd73682170, type: 2}
+  weaponAnim: {fileID: 0}
 --- !u!1 &5834156105576390037
 GameObject:
   m_ObjectHideFlags: 0

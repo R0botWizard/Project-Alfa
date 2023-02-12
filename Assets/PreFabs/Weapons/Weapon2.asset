@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Weapon2
   m_EditorClassIdentifier: 
   range: 120
-  shootingDelay: 0
-  damage: 2
+  fireRate: 30
+  damage: 1
   ammo: 200
   maxAmmo: 200
   reloadTime: 1
+  type: 0
   weapon: {fileID: 8517510564487565550, guid: b707315c61dc90e47b2cb344c56deb7b, type: 3}
+  ositionOffset: {x: 0, y: 0, z: 0}
+  rotationOffset: {x: 0, y: 0, z: 0}
+  scaleOffset: {x: 0, y: 0, z: 0}
