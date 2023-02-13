@@ -8,13 +8,14 @@ public class Weapon : ScriptableObject
     public float range;
     public float fireRate;
     public float damage;
-    public int ammo;
+    public float ammo;
     public float maxAmmo;
     public float reloadTime;
     public Type type;
+    public Energy energy;
     public GameObject weapon;
 
-    public Vector3 ositionOffset;
+    public Vector3 positionOffset;
     public Vector3 rotationOffset;
     public Vector3 scaleOffset;
     
@@ -24,5 +25,10 @@ public class Weapon : ScriptableObject
     {
         Rifle,
         Canon,
+    }
+    public enum Energy
+    {
+        Red,
+        Blu,
     }
 }

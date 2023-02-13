@@ -12,13 +12,15 @@ public class WeaponController : MonoBehaviour
     public Weapon weapon;
     public Animator weaponAnim;
     public GameObject impactEffect;
+    public float currentAmmo { get; private set; }
+    public float maxAmmo { get; set; }
 
-
-
-    void Update()
+    private void Start()
     {
-        
+        currentAmmo = weapon.ammo;
+        maxAmmo = weapon.maxAmmo;
     }
+
     private void OnDrawGizmos()
     {
         RaycastHit hitCam;
@@ -43,6 +45,10 @@ public class WeaponController : MonoBehaviour
         weaponAnim.SetBool("isShooting",input);
         weaponAnim.speed = weapon.fireRate;
     }
+    public void reloadAnimation()
+    {
+
+    }
 
     public void shoot()
     {
@@ -51,32 +57,44 @@ public class WeaponController : MonoBehaviour
             case Weapon.Type.Rifle: break;
             case Weapon.Type.Canon: break;
         }*/
-        muzzleFlash.Play();
-
-        RaycastHit hitCam;
-        Vector2 screenCenterPoint = new Vector2(_camera.scaledPixelWidth / 2f, _camera.scaledPixelHeight / 2f);
-        Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-        if (Physics.Raycast(ray, out hitCam, weapon.range))
+        
+        currentAmmo--;
+        if (currentAmmo > 0)
         {
-            RaycastHit hitWep;
-            if (Physics.Raycast(_weaponOrigin.position, (hitCam.point - _weaponOrigin.position).normalized, out hitWep, weapon.range))
+            muzzleFlash.Play();
+            RaycastHit hitCam;
+            Vector2 screenCenterPoint = new Vector2(_camera.scaledPixelWidth / 2f, _camera.scaledPixelHeight / 2f);
+            Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+            if (Physics.Raycast(ray, out hitCam, weapon.range))
             {
-                Enemy target = hitWep.transform.GetComponent<Enemy>();
-                if (target != null)
+                RaycastHit hitWep;
+                if (Physics.Raycast(_weaponOrigin.position, (hitCam.point - _weaponOrigin.position).normalized, out hitWep, weapon.range))
                 {
-                    target.takeDamage(weapon.damage);
-                }
+                    Enemy target = hitWep.transform.GetComponent<Enemy>();
+                    if (target != null)
+                    {
+                        target.takeDamage(weapon.damage);
+                    }
 
-                Destroy(Instantiate(impactEffect, hitWep.point, Quaternion.LookRotation(hitWep.normal)),1f);
-                
+                    Destroy(Instantiate(impactEffect, hitWep.point, Quaternion.LookRotation(hitWep.normal)), 1f);
+                }
             }
+            Debug.Log("Current ammo: "+ currentAmmo+" Ammo capacity "+ weapon.ammo+"Max ammo "+maxAmmo);
+        }
+        else
+        {
+            reload();
         }
 
-        
-
-        
-
-
+    }
+    public void reload()
+    {
+        float ammoGain = weapon.ammo - currentAmmo;
+        if(maxAmmo > 0)
+        {
+            currentAmmo += ammoGain;
+            maxAmmo -= ammoGain;
+        }
     }
 
     
