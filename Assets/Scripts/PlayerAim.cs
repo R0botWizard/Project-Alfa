@@ -18,19 +18,12 @@ public class PlayerAim : MonoBehaviour
     private void Update()
     {
         manageWeapons();
+        onReload();
         onAim();
         onFire();
         onZoom();
         
     }
-
-    /*private void onAim()
-    {
-        float yMouse = Input.GetAxis("Mouse Y") * -_ySensitivity * Time.deltaTime;
-
-        _camera.transform.Rotate(yMouse, 0, 0);
-    }*/
-
     private void onAim()
     {
         float yMouse = Input.GetAxis("Mouse Y") * -_ySensitivity * Time.deltaTime;
@@ -82,6 +75,14 @@ public class PlayerAim : MonoBehaviour
         
     }
 
+    private void onReload()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            _weapons[_selectedWeapon].reload();
+        }
+       
+    }
     private void weaponSelect(int selectedWeaponIndex)
     {
         for(int i = 0; i< _weapons.Length; i++)

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6248876902391259976}
+  - component: {fileID: 630256787153234145}
   m_Layer: 0
   m_Name: BluAcumulator
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &630256787153234145
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536789365067930558}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7842088, y: 1.7174398, z: 1}
+  m_Center: {x: 0.10789555, y: 0.8984272, z: 0}
 --- !u!1 &3358543692815345129
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2724714183639924563}
   - component: {fileID: 4106791793999982953}
-  - component: {fileID: 5625257200506760802}
   m_Layer: 0
   m_Name: Acumulator-0
   m_TagString: Untagged
@@ -86,19 +99,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!65 &5625257200506760802
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3358543692815345129}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.82073355, y: 1.6310881, z: 1}
-  m_Center: {x: 0.08963324, y: 0.95571524, z: 0}
 --- !u!1 &5987036878312856880
 GameObject:
   m_ObjectHideFlags: 0

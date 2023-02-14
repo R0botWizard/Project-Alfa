@@ -271,6 +271,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 822875756302276463, guid: 681c3cee67c3dca4482316eda3691c1b, type: 3}
   m_PrefabInstance: {fileID: 23851837}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &43727669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 536789365067930558, guid: 0c214079383bf0247895ab4c7f5d5a4f, type: 3}
+  m_PrefabInstance: {fileID: 256429007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &43727670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43727669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c671dacc71559499ed6fcb0b26a96c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponController: {fileID: 0}
+  _collectableType: 1
+  _respawnTimer: 20
 --- !u!1001 &47136645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1635,6 +1655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BluAcumulator
       objectReference: {fileID: 0}
+    - target: {fileID: 630256787153234145, guid: 0c214079383bf0247895ab4c7f5d5a4f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6248876902391259976, guid: 0c214079383bf0247895ab4c7f5d5a4f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1679,7 +1703,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5625257200506760802, guid: 0c214079383bf0247895ab4c7f5d5a4f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0c214079383bf0247895ab4c7f5d5a4f, type: 3}
 --- !u!1001 &301055581
 PrefabInstance:
@@ -12603,7 +12628,7 @@ GameObject:
   - component: {fileID: 1187832753}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14649,6 +14674,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8379036456796777645, guid: 134eff1f43d60644e8084e4ce5ddbaf8, type: 3}
   m_PrefabInstance: {fileID: 1404168454}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1416722631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4035869162548771394, guid: 1cb7b2a8368fd76458e025195b854157, type: 3}
+  m_PrefabInstance: {fileID: 1992001159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1416722632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416722631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c671dacc71559499ed6fcb0b26a96c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponController: {fileID: 0}
+  _collectableType: 0
+  _respawnTimer: 10
 --- !u!1001 &1428964036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20515,7 +20560,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3806564763279456334, guid: 1cb7b2a8368fd76458e025195b854157, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1cb7b2a8368fd76458e025195b854157, type: 3}
 --- !u!1001 &1997361537
 PrefabInstance:
