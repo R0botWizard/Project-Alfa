@@ -6,29 +6,15 @@ public class Collectable : MonoBehaviour
 {
     [SerializeField] private WeaponController _weaponController;
     [SerializeField] private CollectableType _collectableType;
-    [SerializeField] private float _respawnTimer;
-    private float time;
+    public float respawnTime;
+    
 
     public enum CollectableType
     {
         RedAmmo,
         BluAmmo,
-        Medkit,
     }
 
-    private void Start()
-    {
-        time = _respawnTimer;
-    }
-    void Update()
-    {
-        if (!this.isActiveAndEnabled)
-        {
-            time -= Time.deltaTime;
-            Debug.Log("ai bleaaaaa");
-            respawn();
-        }
-    }
     private void replenishRed()
     {
         if (_weaponController.weapon.energy == Weapon.Energy.Red)
@@ -36,6 +22,7 @@ public class Collectable : MonoBehaviour
             this.gameObject.SetActive(false);
             _weaponController.maxAmmo = _weaponController.weapon.maxAmmo;
         }
+
     }
 
     private void replenishBlu()
@@ -58,7 +45,7 @@ public class Collectable : MonoBehaviour
 
     private void respawn()
     {
-        if (!this.isActiveAndEnabled && time <=0)
+        if (!this.isActiveAndEnabled)
         {
             this.gameObject.SetActive(true);
         }

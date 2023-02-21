@@ -253,8 +253,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
   _weaponOrigin: {fileID: 0}
+  muzzleFlash: {fileID: 0}
   weapon: {fileID: 11400000, guid: 14aee38c0525e294290e5bcd73682170, type: 2}
   weaponAnim: {fileID: 0}
+  impactEffect: {fileID: 0}
 --- !u!1 &5834156105576390037
 GameObject:
   m_ObjectHideFlags: 0

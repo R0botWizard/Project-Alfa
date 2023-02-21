@@ -497,8 +497,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7fd27dec65e15479883c6affb13ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  _weaponOrigin: {fileID: 0}
+  muzzleFlash: {fileID: 3862365302686784449, guid: da62b23a16b6c9b4ba3a7d3bff274972, type: 3}
   weapon: {fileID: 11400000, guid: 31e63e66adbd70d4fb407d7a4e2213af, type: 2}
   weaponAnim: {fileID: 0}
+  impactEffect: {fileID: 0}
 --- !u!1 &8762356937365485936
 GameObject:
   m_ObjectHideFlags: 0

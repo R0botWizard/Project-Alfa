@@ -7,6 +7,8 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _weaponOrigin;
     [SerializeField] private ParticleSystem muzzleFlash;
+    [SerializeField] private float laserDuration;
+    private LineRenderer _laserLine;
     
 
     public Weapon weapon;
@@ -17,6 +19,7 @@ public class WeaponController : MonoBehaviour
 
     private void Start()
     {
+        _laserLine = _weaponOrigin.GetComponent<LineRenderer>();
         currentAmmo = weapon.ammo;
         maxAmmo = weapon.maxAmmo;
     }
@@ -65,11 +68,13 @@ public class WeaponController : MonoBehaviour
             RaycastHit hitCam;
             Vector2 screenCenterPoint = new Vector2(_camera.scaledPixelWidth / 2f, _camera.scaledPixelHeight / 2f);
             Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+            _laserLine.SetPosition(0,_weaponOrigin.position);
             if (Physics.Raycast(ray, out hitCam, weapon.range))
             {
                 RaycastHit hitWep;
                 if (Physics.Raycast(_weaponOrigin.position, (hitCam.point - _weaponOrigin.position).normalized, out hitWep, weapon.range))
                 {
+                    _laserLine.SetPosition(1, hitWep.point);
                     Enemy target = hitWep.transform.GetComponent<Enemy>();
                     if (target != null)
                     {
@@ -79,6 +84,7 @@ public class WeaponController : MonoBehaviour
                     Destroy(Instantiate(impactEffect, hitWep.point, Quaternion.LookRotation(hitWep.normal)), 1f);
                 }
             }
+            StartCoroutine(ShootLaser());
             Debug.Log("Current ammo: "+ currentAmmo+" Ammo capacity "+ weapon.ammo+"Max ammo "+maxAmmo);
         }
         else
@@ -86,6 +92,13 @@ public class WeaponController : MonoBehaviour
             reload();
         }
 
+    }
+
+    private IEnumerator ShootLaser()
+    {
+        _laserLine.enabled = true;
+        yield return new WaitForSeconds(laserDuration);
+        _laserLine.enabled = false;
     }
     public void reload()
     {
@@ -96,6 +109,4 @@ public class WeaponController : MonoBehaviour
             maxAmmo -= ammoGain;
         }
     }
-
-    
 }
