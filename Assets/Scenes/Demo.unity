@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 571938254}
   - component: {fileID: 1877491842}
   - component: {fileID: 1292826080}
+  - component: {fileID: 1877491843}
   m_Layer: 0
   m_Name: PlasmaGun
   m_TagString: Untagged
@@ -15493,13 +15494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7fd27dec65e15479883c6affb13ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 1192664601}
-  _weaponOrigin: {fileID: 587969457}
-  muzzleFlash: {fileID: 587969459}
-  laserDuration: 0.1
-  weapon: {fileID: 11400000, guid: 14aee38c0525e294290e5bcd73682170, type: 2}
   weaponAnim: {fileID: 1504266628}
-  impactEffect: {fileID: 7874620480512654071, guid: 21420ab1459a94f4984ca895256b44f4, type: 3}
 --- !u!4 &908039273
 Transform:
   m_ObjectHideFlags: 0
@@ -15881,6 +15876,7 @@ GameObject:
   - component: {fileID: 907308467}
   - component: {fileID: 1504266628}
   - component: {fileID: 907308469}
+  - component: {fileID: 1504266629}
   m_Layer: 0
   m_Name: LaserRifle
   m_TagString: Untagged
@@ -18957,6 +18953,7 @@ GameObject:
   - component: {fileID: 2046842335}
   - component: {fileID: 2046842338}
   - component: {fileID: 2046842337}
+  - component: {fileID: 2046842339}
   m_Layer: 0
   m_Name: LaserRayRifle
   m_TagString: Untagged
@@ -19168,13 +19165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7fd27dec65e15479883c6affb13ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 1192664601}
-  _weaponOrigin: {fileID: 1710200487}
-  muzzleFlash: {fileID: 0}
-  laserDuration: 0
-  weapon: {fileID: 11400000, guid: 62e404de14ec4444cb622bfaed72ac75, type: 2}
   weaponAnim: {fileID: 1877491842}
-  impactEffect: {fileID: 0}
 --- !u!1001 &1327683405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20585,6 +20576,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1504266629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953383678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90079e7760ae3e4a8ad8328cc9cf397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 1192664601}
+  _weaponOrigin: {fileID: 587969457}
+  muzzleFlash: {fileID: 587969459}
+  effectDuration: 0.1
+  weaponStats: {fileID: 11400000, guid: 14aee38c0525e294290e5bcd73682170, type: 2}
+  impactEffect: {fileID: 7874620480512654071, guid: 21420ab1459a94f4984ca895256b44f4, type: 3}
 --- !u!1 &1509977586
 GameObject:
   m_ObjectHideFlags: 0
@@ -24712,6 +24721,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1877491843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62130327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2802f8dcebd78543913403a59d0a536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponStats: {fileID: 11400000, guid: 62e404de14ec4444cb622bfaed72ac75, type: 2}
 --- !u!1001 &1887481980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26178,13 +26200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7fd27dec65e15479883c6affb13ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 1192664601}
-  _weaponOrigin: {fileID: 390544330}
-  muzzleFlash: {fileID: 390544332}
-  laserDuration: 0.1
-  weapon: {fileID: 11400000, guid: 31e63e66adbd70d4fb407d7a4e2213af, type: 2}
   weaponAnim: {fileID: 2046842338}
-  impactEffect: {fileID: 7874620480512654071, guid: da62b23a16b6c9b4ba3a7d3bff274972, type: 3}
 --- !u!95 &2046842338
 Animator:
   serializedVersion: 5
@@ -26205,6 +26221,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2046842339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255415429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90079e7760ae3e4a8ad8328cc9cf397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 1192664601}
+  _weaponOrigin: {fileID: 390544330}
+  muzzleFlash: {fileID: 390544332}
+  effectDuration: 0.4
+  weaponStats: {fileID: 11400000, guid: 31e63e66adbd70d4fb407d7a4e2213af, type: 2}
+  impactEffect: {fileID: 7874620480512654071, guid: da62b23a16b6c9b4ba3a7d3bff274972, type: 3}
 --- !u!1001 &2064410797
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   range: 120
   fireRate: 30
   damage: 1
-  ammo: 200
+  ammo: 100
   maxAmmo: 200
   reloadTime: 1
   type: 0

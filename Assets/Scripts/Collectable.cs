@@ -17,20 +17,20 @@ public class Collectable : MonoBehaviour
 
     private void replenishRed()
     {
-        if (_weaponController.weapon.energy == Weapon.Energy.Red)
+        if (_weaponController._weaponType.GetWeaponStats().energy == Weapon.Energy.Red)
         {
             this.gameObject.SetActive(false);
-            _weaponController.maxAmmo = _weaponController.weapon.maxAmmo;
+            _weaponController._weaponType.ReplenishAmmo();
         }
 
     }
 
     private void replenishBlu()
     {
-        if (_weaponController.weapon.energy == Weapon.Energy.Blu)
+        if (_weaponController._weaponType.GetWeaponStats().energy == Weapon.Energy.Blu)
         {
             this.gameObject.SetActive(false);
-            _weaponController.maxAmmo = _weaponController.weapon.maxAmmo;
+            _weaponController._weaponType.ReplenishAmmo();
         }
     }
 
@@ -55,7 +55,7 @@ public class Collectable : MonoBehaviour
         if(other.tag == "Player")
         {
             _weaponController = other.GetComponentInChildren<WeaponController>();
-            if (_weaponController.maxAmmo < _weaponController.weapon.maxAmmo)
+            if (_weaponController._weaponType.GetMaxAmmo() < _weaponController._weaponType.GetWeaponStats().maxAmmo)
             {
                 collect();
             }

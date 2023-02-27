@@ -10,10 +10,6 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] private WeaponController[] _weapons;
     private float _transitionSpeed = 50;
     private int _selectedWeapon;
-    private void Awake()
-    {
-        
-    }
 
     private void Update()
     {
@@ -44,7 +40,7 @@ public class PlayerAim : MonoBehaviour
     {
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
-            nextTimeToFire = Time.time + 1f / _weapons[_selectedWeapon].weapon.fireRate;
+            nextTimeToFire = Time.time + 1f / _weapons[_selectedWeapon]._weaponType.GetWeaponStats().fireRate;
             _weapons[_selectedWeapon].shoot();
             _weapons[_selectedWeapon].shootingAnimation(true);
         }
@@ -79,7 +75,7 @@ public class PlayerAim : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            _weapons[_selectedWeapon].reload();
+            _weapons[_selectedWeapon]._weaponType.Reload();
         }
        
     }
@@ -92,7 +88,6 @@ public class PlayerAim : MonoBehaviour
 
         _weapons[selectedWeaponIndex].gameObject.SetActive(true);
         _selectedWeapon = selectedWeaponIndex;
-        
     }
     private void manageWeapons()
     {
