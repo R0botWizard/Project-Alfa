@@ -17,7 +17,7 @@ MonoBehaviour:
   damage: 40
   ammo: 5
   maxAmmo: 25
-  reloadTime: 0.5
+  reloadTime: 2.5
   type: 1
   energy: 1
   weapon: {fileID: 9054989965839408142, guid: a5bacf0d45de92b449b6443475ab7cf0, type: 3}

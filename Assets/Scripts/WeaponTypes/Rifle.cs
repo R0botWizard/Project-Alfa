@@ -13,6 +13,13 @@ public class Rifle : MonoBehaviour,IWeapon
     public GameObject impactEffect;
     public float currentAmmo { get; private set; }
     public float maxAmmo { get; set; }
+
+    private bool isReloading = false;
+    void OnEnable()
+    {
+        isReloading = false;
+    }
+
     private void Start()
     {
         _laserLine = _weaponOrigin.GetComponent<LineRenderer>();
@@ -41,7 +48,7 @@ public class Rifle : MonoBehaviour,IWeapon
     {
         //Debug.Log("Rifle Shoot");
         currentAmmo--;
-        if (currentAmmo > 0)
+        if (currentAmmo >= 0 && !isReloading)
         {
             muzzleFlash.Play();
             RaycastHit hitCam;
@@ -93,9 +100,17 @@ public class Rifle : MonoBehaviour,IWeapon
         yield return new WaitForSeconds(effectDuration);
         _laserLine.enabled = false;
     }
-
+    
     public void Reload()
     {
+        StartCoroutine(reloadTimer());
+    }
+
+    IEnumerator reloadTimer()
+    {
+        Debug.Log("Reloading...");
+        isReloading = true;
+        yield return new WaitForSeconds(weaponStats.reloadTime);
         float ammoGain = weaponStats.ammo - currentAmmo;
         if (maxAmmo > 0)
         {
@@ -109,7 +124,8 @@ public class Rifle : MonoBehaviour,IWeapon
                 currentAmmo += ammoGain;
                 maxAmmo -= ammoGain;
             }
-
         }
+        Debug.Log("Reloading complete!");
+        isReloading = false;
     }
 }

@@ -17,8 +17,9 @@ MonoBehaviour:
   damage: 10
   ammo: 30
   maxAmmo: 120
-  reloadTime: 0.5
+  reloadTime: 1
   type: 0
+  energy: 0
   weapon: {fileID: 4402095644198225700, guid: 907d789c5580b7041bd96e350a1e747e, type: 3}
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}

@@ -54,7 +54,9 @@ public class Collectable : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            Debug.Log("You You you");
             _weaponController = other.GetComponentInChildren<WeaponController>();
+            Debug.Log("Weapon detected");
             if (_weaponController._weaponType.GetMaxAmmo() < _weaponController._weaponType.GetWeaponStats().maxAmmo)
             {
                 collect();

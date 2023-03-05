@@ -1006,9 +1006,9 @@ GameObject:
   - component: {fileID: 5569487814588640113}
   - component: {fileID: 1901298528745207866}
   - component: {fileID: 1700340949697786482}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
