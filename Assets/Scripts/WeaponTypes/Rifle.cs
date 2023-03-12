@@ -8,6 +8,8 @@ public class Rifle : MonoBehaviour,IWeapon
     [SerializeField] private Transform _weaponOrigin;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private float effectDuration;
+    
+
     public Weapon weaponStats;
     private LineRenderer _laserLine;
     public GameObject impactEffect;
@@ -46,8 +48,8 @@ public class Rifle : MonoBehaviour,IWeapon
     }
     public void Shoot()
     {
-        //Debug.Log("Rifle Shoot");
         currentAmmo--;
+        
         if (currentAmmo >= 0 && !isReloading)
         {
             muzzleFlash.Play();
@@ -89,6 +91,11 @@ public class Rifle : MonoBehaviour,IWeapon
         return maxAmmo;
     }
 
+    public float GetCurrentAmmo()
+    {
+        return currentAmmo;
+    }
+
     public Weapon GetWeaponStats()
     {
         return weaponStats;
@@ -103,7 +110,14 @@ public class Rifle : MonoBehaviour,IWeapon
     
     public void Reload()
     {
-        StartCoroutine(reloadTimer());
+        if(maxAmmo > 0)
+        {
+            StartCoroutine(reloadTimer());
+        }
+        else
+        {
+            return;
+        }
     }
 
     IEnumerator reloadTimer()

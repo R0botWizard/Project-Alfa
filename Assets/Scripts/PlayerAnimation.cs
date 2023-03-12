@@ -4,18 +4,9 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-
     [SerializeField] private Animator _playerAnimator;
     [SerializeField] private PlayerController _playerController;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         setMoveAnimation();

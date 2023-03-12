@@ -9,19 +9,12 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _explosionRadius;
     [SerializeField] private LayerMask _enemiesMask;
     private float _damage;
-
-    
-    private void Start()
-    {
-        Debug.Log("Projectile will deal: "+ _damage+" dmg");
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         Explode();
     }
-    private List<Enemy> _damagedEnemies = new List<Enemy>();
 
+    private List<Enemy> _damagedEnemies = new List<Enemy>();
     private void Explode()
     {
         if (_explosion != null)

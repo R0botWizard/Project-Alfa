@@ -7,6 +7,7 @@ public class Canon : MonoBehaviour, IWeapon
     [SerializeField] Camera _camera;
     [SerializeField] Transform _weaponOrigin;
     [SerializeField] private ParticleSystem muzzleFlash;
+
     public Weapon weaponStats;
     private GameObject _currentProjectile;
 
@@ -94,7 +95,10 @@ public class Canon : MonoBehaviour, IWeapon
     {
         maxAmmo = weaponStats.maxAmmo;
     }
-
+    public float GetCurrentAmmo()
+    {
+        return currentAmmo;
+    }
     public float GetMaxAmmo()
     {
         return maxAmmo;

@@ -14,7 +14,11 @@ public class RespawnTimer : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        _collectable = collider.GetComponent<Collectable>();
-        StartCoroutine(Respawn(collider,_collectable.respawnTime));
+        if(collider.tag == "Collectable")
+        {
+            _collectable = collider.GetComponent<Collectable>();
+            StartCoroutine(Respawn(collider, _collectable.respawnTime));
+        }
+        
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 100
   fireRate: 7.5
-  damage: 10
+  damage: 20
   ammo: 30
   maxAmmo: 120
   reloadTime: 1

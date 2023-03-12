@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Stats")]
+    [SerializeField] private float _maxHP;
+    [SerializeField] private HealthBar _healthBar;
     [Header("Properties")]
     [SerializeField] private float _speed;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _xSensitivity;
+
 
     public bool isSprinting;
     private CharacterController _pc;
@@ -16,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 moveDir;
     private void Awake()
     {
+        GameManager.Instance.InitializePlayerStats(_maxHP);
         _pc = GetComponent<CharacterController>();
         moveDir = Vector3.zero;
     }
@@ -86,6 +91,16 @@ public class PlayerController : MonoBehaviour
             verticalvelocity = 0;
         }
         verticalvelocity -= gravity * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "AttackCollider")
+        {
+            Enemy enemy = other.GetComponentInParent<Enemy>();
+            GameManager.Instance.PlayerTakeDamage(enemy.Damage);
+            _healthBar.UpdateHealthBar(GameManager.Instance.playerMaxHP, GameManager.Instance.playerCurrentHP);
+        }
     }
 
 }
