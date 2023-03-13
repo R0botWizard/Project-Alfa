@@ -10,6 +10,7 @@ public interface IWeapon
     public float GetCurrentAmmo();
     public float GetMaxAmmo();
     public Weapon GetWeaponStats();
+    public bool GetReloadStatus();
 }
 
 

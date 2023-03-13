@@ -13,7 +13,8 @@ public class WeaponController : MonoBehaviour
 
     private void Update()
     {
-        _ammoBar.UpdateAmmoBar(_weaponType.GetWeaponStats().ammo,_weaponType.GetCurrentAmmo(),_weaponType.GetMaxAmmo());
+        _ammoBar.UpdateAmmoBar(_weaponType.GetWeaponStats().ammo,_weaponType.GetCurrentAmmo(),_weaponType.GetMaxAmmo(),_weaponType.GetWeaponStats().energy);
+        reloadAnimation();
     }
     public void shootingAnimation(bool input)
     {
@@ -27,7 +28,7 @@ public class WeaponController : MonoBehaviour
     
     public void reloadAnimation()
     {
-
+        _ammoBar.UpdateReloadStatus(_weaponType.GetReloadStatus());
     }
     
     

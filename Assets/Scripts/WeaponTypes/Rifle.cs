@@ -95,7 +95,10 @@ public class Rifle : MonoBehaviour,IWeapon
     {
         return currentAmmo;
     }
-
+    public bool GetReloadStatus()
+    {
+        return isReloading;
+    }
     public Weapon GetWeaponStats()
     {
         return weaponStats;

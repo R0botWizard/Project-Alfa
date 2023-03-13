@@ -104,6 +104,10 @@ public class Canon : MonoBehaviour, IWeapon
         return maxAmmo;
     }
 
+    public bool GetReloadStatus()
+    {
+        return isReloading;
+    }
     public Weapon GetWeaponStats()
     {
         return weaponStats;
