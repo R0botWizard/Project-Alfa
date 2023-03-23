@@ -10,6 +10,10 @@ LM - shoot
 R - reload 
 </pre>
 
+<pre>
+Win - on 10 enemies killed
+Lose - on player death
+</pre>
 
 <pre>
 Task itself took me around 14 days. 
